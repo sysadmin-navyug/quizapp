@@ -1,0 +1,22 @@
+<div class="text_content">
+	<br/>
+	<% if $hflag == 1 %>
+		<h2>GAME OVER, <%= $name %>! </h2>
+		<br/><p style="text-align:center;">
+		<div id="image">
+			<%=image_tag("5.png", alt: "Example Image")%>
+		</div>
+		</p>
+		<p style="text-align:center;">Hangman : Better luck nexk time. ~EVIL LAUGH~</p>
+	<% else %>
+		<h2>Congratulation, <%= $name %>! </h2>
+		<br/>
+		<p style="text-align:center;">Hangman: You won the quiz. Your are eligible to enter next stage.</p>
+	<% end %>
+	<br/><br/>
+	Your Score : <%= $score %> 
+	<div id="btn">
+		<button onclick="window.location.href='/hangman'">Exit</button>
+	</div>
+		<button onclick="window.location.href='/admin/new'" style="position:fixed;right:4em;top:4em;float:right;">Admin</button>
+</div>

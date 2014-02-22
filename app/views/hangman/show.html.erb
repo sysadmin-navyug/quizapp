@@ -1,0 +1,67 @@
+<div class="text_content">
+Hangman :
+	<% if $hang > 0 %>
+		<%= $hStatus[$hang] %> 
+	<% else %>
+		Hello <%= $name %>
+	<% end %>
+	<hr>
+	<br/>
+	<div class="main" >
+		<div id="question">
+			<table>
+				<tr>
+					<td colspan = "4">
+					Question <%= $id+1 %> : <%= $quiz.question %>
+					</td>
+				</tr>
+				<tr><td> &nbsp </td></tr>
+				<tr>
+					<td>
+					<%= form_tag( :controller => 'hangman', :action => 'create', :method=>'post') do %>
+						<%= submit_tag( 'A' ) %> <span style="padding:1em;"> <%= $quiz.option_a %></span>
+					<% end %>
+					</td>
+				</tr>
+				<tr>
+				<%= form_tag( :controller => 'hangman', :action => 'create', :method=>'post') do %>
+					<td>
+						<% text_field_tag('option', 'B') %> 
+						<%= submit_tag( 'B' ) %><span style="padding:1em;"> <%= $quiz.option_b %>
+					</td>
+				</tr>
+				<tr>
+				<% end %>
+				<%= form_tag( :controller => 'hangman', :action => 'create', :method=>'post') do %>
+					<td>
+						<% text_field_tag( 'option', 'C') %> 
+					 	<%= submit_tag( 'C' ) %><span style="padding:1em;"> <%= $quiz.option_c %>
+					</td>
+				</tr>
+				<tr>
+				<% end %>
+				<%= form_tag( :controller => 'hangman', :action => 'create', :method=>'post') do %>
+					<td>
+						<% text_field_tag('option', 'D') %>
+						<%= submit_tag( 'D' ) %><span style="padding:1em;"> <%= $quiz.option_d %>
+					</td>
+
+				<% end %>
+				</tr>
+				<tr><td> &nbsp </td></tr>
+				<tr><td> Your Score is <%= $score %>. </td></tr>
+				<tr><td> You have <%= $chances - $hang %> chances left.</td></tr>
+			</table>
+		</div>
+	</div>
+	<br/>
+	<hr>
+	<br/>
+	<% if $hang > 0 %>
+		<div id="image">
+			<%=image_tag("#{$hang}.png", alt: "Example Image")%>
+		</div>
+	<% end %>
+	<br>
+		<button onclick="window.location.href='/hangman'" style="position:fixed;right:4em;top:4em;float:right;">Exit</button>
+</div>
